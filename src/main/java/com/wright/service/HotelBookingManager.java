@@ -1,17 +1,20 @@
 package com.wright.service;
 
-import com.wright.dao.InMemoryReservationRepository;
+import com.wright.dao.ReservationRepository;
 import com.wright.model.exception.BookingAlreadyExistsException;
 import com.wright.model.exception.RoomDoesNotExistException;
 
 import java.time.LocalDate;
 import java.util.stream.Collectors;
 
+/**
+ * Implementation of the {@link BookingManager}
+ */
 public class HotelBookingManager implements BookingManager {
 
-    private InMemoryReservationRepository repository;
+    private ReservationRepository repository;
 
-    public HotelBookingManager(InMemoryReservationRepository repository) {
+    public HotelBookingManager(ReservationRepository repository) {
         this.repository = repository;
     }
 

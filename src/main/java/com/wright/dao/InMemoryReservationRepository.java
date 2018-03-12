@@ -4,9 +4,15 @@ import com.wright.model.exception.RoomDoesNotExistException;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * In-memory implementation of {@link ReservationRepository}
+ */
 public class InMemoryReservationRepository implements ReservationRepository {
 
     private Set<Integer> rooms = new HashSet<>();

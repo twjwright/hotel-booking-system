@@ -13,6 +13,9 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 
+/**
+ * Tests for {@link InMemoryReservationRepository}
+ */
 public class InMemoryReservationRepositoryTest {
 
     private static final Integer ROOM_NUMBER = 101;

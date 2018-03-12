@@ -1,10 +1,14 @@
 package com.wright.dao;
 
 import com.wright.model.exception.RoomDoesNotExistException;
+
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * Repository for interacting with a reservation repository
+ */
 public interface ReservationRepository {
 
     /**

@@ -1,9 +1,8 @@
 package com.wright.service;
 
 import com.google.common.collect.Iterables;
-import com.wright.dao.InMemoryReservationRepository;
+import com.wright.dao.ReservationRepository;
 import com.wright.model.exception.BookingAlreadyExistsException;
-import com.wright.service.HotelBookingManager;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -21,6 +20,9 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
+/**
+ * Tests for {@link HotelBookingManager}
+ */
 public class HotelBookingManagerTest {
 
     private static final Integer ROOM_NUMBER = 101;
@@ -30,7 +32,7 @@ public class HotelBookingManagerTest {
     private static final String ANOTHER_GUEST_NAME = "Another Guest";
 
     @Mock
-    private InMemoryReservationRepository mockRepository;
+    private ReservationRepository mockRepository;
 
     private HotelBookingManager underTest;
 

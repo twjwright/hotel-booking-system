@@ -1,5 +1,8 @@
 package com.wright.model.exception;
 
+/**
+ * Exception thrown when booking already exists
+ */
 public class BookingAlreadyExistsException extends Exception {
 
     public BookingAlreadyExistsException() {

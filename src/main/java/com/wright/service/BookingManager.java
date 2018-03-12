@@ -5,6 +5,9 @@ import com.wright.model.exception.RoomDoesNotExistException;
 
 import java.time.LocalDate;
 
+/**
+ * The Booking Manager
+ */
 public interface BookingManager {
 
     /**
