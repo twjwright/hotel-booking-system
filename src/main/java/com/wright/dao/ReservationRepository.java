@@ -1,45 +1,40 @@
 package com.wright.dao;
 
+import com.wright.model.exception.RoomDoesNotExistException;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
 
-public class ReservationRepository {
-
-    private Map<Integer, Map<LocalDate, String>> reservations = new ConcurrentHashMap<>();
+public interface ReservationRepository {
 
     /**
-     *
-     * @param guestName
-     * @param roomNumber
-     * @param date
-     * @should add booking for guest, room number, and date
+     * Adds a booking
+     * @param guestName     guest name on the booking
+     * @param roomNumber    room to be booked
+     * @param date          date to book the room for
      */
-    public void addBooking(String guestName, Integer roomNumber, LocalDate date) {
-        Map<LocalDate, String> booking = new HashMap<>();
-        booking.put(date, guestName);
-        reservations.put(roomNumber, booking);
-    }
+    void addBooking(String guestName, Integer roomNumber, LocalDate date) throws RoomDoesNotExistException;
 
     /**
-     *
-     * @param roomNumber
-     * @param date
-     * @return
-     * @should return empty optional if no bookings exist
-     * @should return empty optional if booking exists for room but on another date
-     * @should return empty optional if booking exists on date but for another room
-     * @should return optional of guests name if booking exists for room and on same date
+     * Returns the guest name if there's a booking for the room and date specified
+     * @param roomNumber    the room number to get the booking details for
+     * @param date          the date to get the booking details for
+     * @return              {@link Optional} containing guest name if booking exists, otherwise empty optional
      */
-    public Optional<String> getGuestNameForBooking(Integer roomNumber, LocalDate date) {
-        if (!reservations.containsKey(roomNumber)) {
-            return Optional.empty();
-        }
-        if (!reservations.get(roomNumber).containsKey(date)) {
-            return Optional.empty();
-        }
-        return Optional.of(reservations.get(roomNumber).get(date));
-    }
+    Optional<String> getGuestNameForBooking(Integer roomNumber, LocalDate date);
+
+    /**
+     * Adds a room to the booking system
+     * @param roomNumber    the room number to add to the booking system
+     */
+    void addRoom(Integer roomNumber);
+
+    /**
+     * Gets the rooms in the booking system
+     * @return              the rooms in the booking system
+     */
+    Set<Integer> getRooms();
+
+
+
 }
